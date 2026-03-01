@@ -41,10 +41,6 @@ def run_plate_affinity(input_file_path,output_file_path,remove_outlier,NA_impute
     data_start_col_num = affin_map.find_start_column(data)
     column_mapping = affin_map.make_column_map(probe_conc,off_compete_conc,data,data_start_col_num)
 
-    # Get the high and low bounds of the off-compete concentrations
-    off_compete_conc_low = sorted(set(off_compete_conc))[1] # get the second smallest value since vehicle
-    off_compete_conc_high = max(off_compete_conc)
-
     # Get column index of the percent NA of each probe concentration for each protein
     conc1_idx = data.columns.tolist().index("NA_percent_conc1")
     conc2_idx = data.columns.tolist().index("NA_percent_conc2")
@@ -172,9 +168,6 @@ def run_plate_affinity(input_file_path,output_file_path,remove_outlier,NA_impute
     com_p = dataframe_processed['combined_p'] 
     combined_p_list = com_p.apply(lambda x: 10**(-x) if isinstance(x, (int, float)) else 1) # Set all special instances to 1
     bh_adjust = multipletests(combined_p_list, alpha = fdr, method = 'fdr_bh')
-    # Check if the Kd value is within off competition limits
-    is_in_range = dataframe_processed['log10_kd'].between(off_compete_conc_low, off_compete_conc_high)
-    dataframe_processed['Kd_within_range'] = is_in_range
     # Boolean: True or False
     dataframe_processed['passes_fdr'] = bh_adjust[0]
     # If there are no values reported for log10_kd, too many of the values were imputed; do not report row
@@ -187,3 +180,4 @@ def run_plate_affinity(input_file_path,output_file_path,remove_outlier,NA_impute
     ordered_data = pd.concat([pass_fdr,not_pass_fdr])
     ordered_data.to_csv(output_file_path)    
     return ordered_data
+
