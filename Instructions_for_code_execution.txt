@@ -1,0 +1,31 @@
+
+System Requirements:
+Software dependencies and operating systems: 
+Python 3.12.2
+R 4.4.1
+Full dependencies and version numbers for python and R environments are included in environment.yml and renv.lock.
+
+Installation Guide:
+Activate the provided python and R environments.
+
+Typical installation time on a "normal" desktop computer: 
+10 minutes
+
+Instructions/Demo:
+1. Copy DIANN output files (report.pg_matrix.tsv, report.pr_matrix.tsv) from the MassIVE repository for an experiment of interest and all scripts into one working directory. Example files are provided for dasatinib affinity profiling in K562 lysate, and this script can be used to reproduce all affinity maps included in the manuscript.
+2. Edit R_affinity_mapping_preprocessing.R to specify the correct working directory path.
+3. Execute R_affinity_mapping_preprocessing.R. This generates data_preprocessed_separate.csv, a file containing normalized and imputed MS data.
+4. Edit affinity_surveyor.py to specify the working directory path and the desired output file path. Execute this script.
+5. The output file contains affinities for all detected proteins. If run using provided data from dasatinib affinity profiling, kinases will have measured affinities.
+
+Expected runtime on a "normal" desktop computer:
+10-30 minutes
+
+Instructions for generating volcano plots:
+
+1. Copy DIANN output files (report.pg, report.pr) for an experiment of interest and all scripts into one working directory.
+2. Edit volcano_plot.R to specify the correct working directory, sample groups, and any desired cutoff filters and settings for plot generation.
+3. Execute volcano_plot.R. This will save a file, DEA_report_imputed.csv, containing log(fold change), -log10(p-value), and all metadata.
+
+Expected runtime on a "normal" desktop computer:
+Less than 5 minutes
