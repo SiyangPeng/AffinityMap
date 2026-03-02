@@ -1,8 +1,8 @@
 # AffinitySurveyor
 
-This database contains files used to analyze proteomics data from micro-mapping after the mass spectrometry data has already been processed by DIANN software. 
+This repository contains scripts used to analyze mass spectrometry data has already been processed by DIANN software for proximity labeled samples. 
 
-volcano_plot.R is an R script used to generate volcano plots to understand the difference in fold difference in one condition compared to another.
+***volcano_plot.R*** is an R script used to generate volcano plots to understand the difference in fold difference in one condition compared to another.
 
 **Instructions_for_code_execution.txt** contains step-by-step guide to processing affinity data. 
 
@@ -13,6 +13,4 @@ The **R_affinity_mapping_preprocessing.R** contains code used to normalize and i
 **get_graph_for_protein.py** specifies the proteins interested in seeing the sigmoidal fit and generates sigmoidal fits and Kd apparent fits for these proteins, outputting graphs with EC50 fits and Cheng-Prusoff fits. 
 
 **affinity_surveyor.py** and **get_graph_for_protein.py** use functions in affinity_map_functions.py for data processing and graph generation. 
-
-Folder ***./sample/*** contains sample input files compatible as input for R_affinity_mapping_preprocessing.R and subsequently affinity_surveyor.py. 
 
