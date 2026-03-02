@@ -2,7 +2,9 @@
 
 This database contains files used to analyze proteomics data from micro-mapping after the mass spectrometry data has already been processed by DIANN software. 
 
-Polodsky.R is an R script used to generate volcano plots to understand the difference in fold difference in one condition compared to another.
+volcano_plot.R is an R script used to generate volcano plots to understand the difference in fold difference in one condition compared to another.
+
+**Instructions_for_code_execution.txt** contains step-by-step guide to processing affinity data. 
 
 The **R_affinity_mapping_preprocessing.R** contains code used to normalize and impute data generated from DIANN tsv files and output csv file used for full_plate_affinity_map.py.  (Previous version of preprocessing code in affinity_map_data_cleanup_from_DIANN.R and affinity data generating code in affinity_map_code.py)
 
@@ -12,5 +14,5 @@ The **R_affinity_mapping_preprocessing.R** contains code used to normalize and i
 
 **affinity_surveyor.py** and **get_graph_for_protein.py** use functions in affinity_map_functions.py for data processing and graph generation. 
 
-Folder ./sample/ contains sample input and output files compatible as input for R_affinity_mapping_preprocessing_with_probe_conc_norm.R and subsequently affinity_map_code.py. 
+Folder ***./sample/*** contains sample input files compatible as input for R_affinity_mapping_preprocessing.R and subsequently affinity_surveyor.py. 
 
